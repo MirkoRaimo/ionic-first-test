@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title >{{ PAGE_TITLE }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-card-title id="greetTitle">
+          Hi {{ guestName }}!
+        </ion-card-title>
+        <ion-button *ngIf="isGivenName()" slot="end" color="danger" (click)="clearGivenName()">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-card-subtitle *ngIf="!isGivenName()">Please, tell me your name, so I can greet you</ion-card-subtitle>
+      <ion-item class="ion-no-padding">
+        <ion-input clearInput type="text" placeholder = "Your fancy name" [(ngModel)]="guestNameInput" (change)="updateGuestName()"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
